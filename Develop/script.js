@@ -6,17 +6,28 @@ let uniqueChars = [ "!", "#", "$", "%", "'", "&","(", ")", "*",  "+", ",", "-", 
 let upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 let lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",];
 let num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+let randomPassword = [];
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
   // User prompts for criteria
-  let length = prompt(`How many characters will your password be? Enter a number from 8-128`);
-  if (length < 8 || length > 128) {
-    alert("Sorry, password must be between 8 and 128 character long.");
-  }
-  let specialChar = prompt(`How many special characters do you want in your password? Must have at least 1`);
+  let length = parseInt(prompt(`How many characters will your password be? Enter a number from 8-128`));
+    if( isNaN(length) ||length < 8 || length > 128) {
+      alert( `Character length should be a number and between 8 - 128 digits. Try again.`);
+      return " ";
+    } 
+  let useUpperCase = confirm(`Do you want to use Uppercase letters?`)
+    if(useUpperCase){
+      randomPassword = randomPassword.concat(upperCase)
+    }
+    let password = "";
+    for(let i = 0; i < length; i++){
+      let index = Math.floor(Math.random() * randomPassword.length)
+      password = password + randomPassword[index]
+    }
+    return password
 }
 
 // Write password to the #password input
