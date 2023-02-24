@@ -1,33 +1,44 @@
 // Assignment code here
 
 // Array of options for password
-
-let uniqueChars = [ "!", "#", "$", "%", "'", "&","(", ")", "*",  "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~",];
-let upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-let lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",];
-let num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-let randomPassword = [];
+var uniqueChars = [ "!", "#", "$", "%", "'", "&","(", ")", "*",  "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~",];
+var upper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var lower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",];
+var num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+var randomPassword = [];
+var password = ""
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
   // User prompts for criteria
-  let length = parseInt(prompt(`How many characters will your password be? Enter a number from 8-128`));
-    if( isNaN(length) ||length < 8 || length > 128) {
+
+  // Length of the password user wants
+  let characterLength = parseInt(prompt(`How many characters will your password be? Enter a number from 8-128`));
+    while( isNaN(characterLength) ||characterLength < 8 || characterLength > 128) {
       alert( `Character length should be a number and between 8 - 128 digits. Try again.`);
-      return " ";
+      characterLength = parseInt(prompt(`How many characters will your password be? Enter a number from 8-128`));
     } 
+
+    // Asking is they want Uppercase letters
   let useUpperCase = confirm(`Do you want to use Uppercase letters?`)
     if(useUpperCase){
-      randomPassword = randomPassword.concat(upperCase)
+    randomPassword = randomPassword.concat(upper);
     }
-    let password = "";
-    for(let i = 0; i < length; i++){
-      let index = Math.floor(Math.random() * randomPassword.length)
-      password = password + randomPassword[index]
-    }
-    return password
+    // Do you want lowercase letters
+    let useLowerCase = confirm(`Do you want to use Lowercase Letters?`)
+      if(useLowerCase){
+      randomPassword = randomPassword.concat(lower);
+      }
+    
+    console.log(randomPassword)
+    
+    // for(let i = 0; i < length; i++){
+    //   let index = Math.floor(Math.random() * randomPassword.length)
+    //   password = password + randomPassword[index]
+    // }
+    // return password
 }
 
 // Write password to the #password input
