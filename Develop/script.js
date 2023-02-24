@@ -15,24 +15,31 @@ function generatePassword() {
   // User prompts for criteria
 
   // Length of the password user wants
-  let characterLength = parseInt(prompt(`How many characters will your password be? Enter a number from 8-128`));
-    while( isNaN(characterLength) ||characterLength < 8 || characterLength > 128) {
-      alert( `Character length should be a number and between 8 - 128 digits. Try again.`);
-      characterLength = parseInt(prompt(`How many characters will your password be? Enter a number from 8-128`));
+    let characterLength = parseInt(prompt(`How many characters will your password be? Enter a number from 8-128`));
+      while( isNaN(characterLength) ||characterLength < 8 || characterLength > 128) {
+        alert( `Character length should be a number and between 8 - 128 digits. Try again.`);
+        characterLength = parseInt(prompt(`How many characters will your password be? Enter a number from 8-128`));
     } 
 
-    // Asking is they want Uppercase letters
-  let useUpperCase = confirm(`Do you want to use Uppercase letters?`)
-    if(useUpperCase){
-    randomPassword = randomPassword.concat(upper);
-    }
-    // Do you want lowercase letters
-    let useLowerCase = confirm(`Do you want to use Lowercase Letters?`)
-      if(useLowerCase){
-      randomPassword = randomPassword.concat(lower);
+    // does user want Uppercase letters
+    let useUpperCase = confirm(`Do you want Uppercase letters in your password?`)
+      if(useUpperCase){
+      randomPassword = randomPassword.concat(upper);
+      }
+    // Does user want lowercase letters
+    let useLowerCase = confirm(`Do you want Lowercase Letters in your password?`)
+        if(useLowerCase){
+        randomPassword = randomPassword.concat(lower);
       }
     
-    console.log(randomPassword)
+      // Does user want numbers
+      let useNum = confirm(`Do you want numbers in your password?`)
+      if(useNum){
+      randomPassword = randomPassword.concat(num);
+    }
+    
+    
+      console.log(randomPassword)
     
     // for(let i = 0; i < length; i++){
     //   let index = Math.floor(Math.random() * randomPassword.length)
