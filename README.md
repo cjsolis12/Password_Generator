@@ -9,5 +9,6 @@ This project uses Javascript eventlisteners to generate a random password based 
 
 ## Usage
 
+![Wepage screenshot](Develop/images/password_generator_screenshot.png)
 
 
