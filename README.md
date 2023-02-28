@@ -16,3 +16,4 @@ https://cjsolis12.github.io/Password_Generator/
 ## Credits
 - TAs Andrea Presto and Zachariah Shone
 - https://dev.to/code_mystery/random-password-generator-using-javascript-6a
+- https://stackoverflow.com/
