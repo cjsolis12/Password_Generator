@@ -1,12 +1,11 @@
 // Assignment code here
 
 // Array of options for password
-var uniqueChars = [ "!", "#", "$", "%", "'", "&","(", ")", "*",  "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~",];
+var uniqueChars = [ "!", "#", "$", "%", "'", "&","(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~",];
 var upper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var lower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",];
 var num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 var randomPassword = [];
-var password = ""
 var selection = false;
 let characterLength = 0;
 
@@ -50,6 +49,7 @@ var gatherOptions = function(){
 
 function generatePassword() {
  // User prompts for criteria
+    var password = ""
     while(selection === false){
         gatherOptions();
         if(selection === false){
@@ -60,17 +60,18 @@ function generatePassword() {
     for(let i = 0; i < characterLength; i++){
       let index  = Math.floor(Math.random() * randomPassword.length -1)
       password = password.concat(randomPassword[index])
-      console.log(password)
+      console.log(randomPassword[index])
+      console.log(index)
     }
+    randomPassword = [];
     return password
 }
 
 // Write password to the #password input
 function writePassword() {
   selection = false;
-  var finalPassword = generatePassword();
   var passwordText = document.querySelector("#password");
-  passwordText.value = finalPassword;
+  passwordText.value = generatePassword();
 }
 
 // Add event listener to generate button
